@@ -29,5 +29,5 @@ crew: |-
   \- Sound design - Dissolve Audio
 directors: Lucy Hilton-Jones & Elliot Taylor
 link: https://www.youtube.com/embed/DzH97BlBLBA
-clip: src/assets/images/hold_my_hand.m4v
+clip: /uploads/hold_my_hand.m4v
 ---

@@ -15,5 +15,5 @@ crew: |-
   * Edited by: Elliot Taylor
 directors: Elliot Taylor & Liam Francis
 link: https://www.youtube.com/embed/djiJKS1lBlE
-clip: src/assets/images/gf.m4v
+clip: /uploads/gf.m4v
 ---

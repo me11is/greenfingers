@@ -38,5 +38,5 @@ crew: |-
   \- Edited by Elliot Taylor
 directors: Elliot Taylor & Liam Francis
 link: https://www.youtube.com/embed/jDybi3fc1f4
-clip: src/assets/images/teoth.m4v
+clip: /uploads/teoth.m4v
 ---

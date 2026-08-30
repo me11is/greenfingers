@@ -44,5 +44,5 @@ crew: |-
   \- Lighting Hire - Drop City
 directors: Lucy Hilton-Jones
 link: https://www.youtube.com/embed/PXfkNt5XiX0
-clip: src/assets/images/bl.m4v
+clip: /uploads/bl.m4v
 ---

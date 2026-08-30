@@ -39,5 +39,5 @@ crew: |-
   \- Lighting Hire: Drop City
 directors: Elliot Taylor & Liam Francis
 link: https://www.youtube.com/embed/fzsmJK4yevg
-clip: src/assets/images/nnn.m4v
+clip: /uploads/nnn.m4v
 ---

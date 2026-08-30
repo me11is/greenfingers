@@ -38,5 +38,5 @@ crew: |-
   Lighting Hire - Drop City
 directors: Lucy Hilton-Jones & Elliot Taylor
 link: https://www.youtube.com/embed/UrxinKeLaUU
-clip: src/assets/images/ac.m4v
+clip: /uploads/ac.m4v
 ---

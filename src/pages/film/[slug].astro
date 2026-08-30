@@ -1,0 +1,83 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import {marked} from "marked";
+
+export const getStaticPaths = (async () => {
+  const films = await getCollection('films')
+  return films.map((film) => ({
+    params: {
+      slug: film.data.title.toLowerCase().replaceAll(' ', '-')
+    },
+    props: {
+      film
+    }
+  }))
+}) satisfies GetStaticPaths;
+
+const { film } = Astro.props;
+const {title, year, link, crew, cast} = film.data;
+const parsedCrew = marked.parse(crew)
+const parsedCast = marked.parse(cast)
+---
+<Layout>
+  <Navbar />
+  <section>
+    <h2>{film.data.title}<span class="year"> {year}</span></h2>
+    <div class="container">
+      <div class="youtube-container">
+        <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"><iframe src={link} style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;" referrerpolicy="strict-origin"></iframe></div>
+      </div>
+      <div class="cast-and-crew">
+        <div class="cast">
+          <h4>Cast</h4>
+          <div class="cast-text" set:html={parsedCast} />
+        </div>
+        <div class="crew">
+          <h4>Crew</h4>
+          <div class="crew-text" set:html={parsedCrew} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    padding: 0 2rem;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+
+  .youtube-container {
+    max-width: 60vw;
+    margin: 0 auto;
+  }
+
+  h4 {
+    text-align: left;
+    font-size: 3rem;
+  }
+
+  .crew-text :global(p), .cast-text :global(p) {
+    margin: 0;
+  }
+
+  .cast-and-crew {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .cast {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+</style>

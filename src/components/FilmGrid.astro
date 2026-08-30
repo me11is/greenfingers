@@ -1,0 +1,130 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  films: CollectionEntry<'films'>[],
+  limit?: number 
+}
+
+const { films, limit } = Astro.props as Props;
+
+---
+<ul>
+    {
+        films.sort((a,b) => b.data.year - a.data.year)
+        .slice(0, limit ?? undefined)
+        .map((film) => {
+            const {title, year, clip} = film.data
+            const slug = title.toLowerCase().replaceAll(' ', '-')
+            return (
+                <a class="film-grid-item" href={'film/' + slug}>
+                    <li>
+                        <article>
+                            <div class="video-wrap">
+                                <video
+                                    autoplay
+                                    loop
+                                    muted
+                                >
+                                    <source src={clip} type="video/mp4"/>
+                                </video>
+                                <div class="film-title">
+                                    <p>{title}</p>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </a>
+            )
+        })
+        
+    }
+</ul>
+
+<style>
+ul {
+    display: grid;
+    min-width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 2.6rem;
+    padding: 0;
+    max-width: 90vw;
+}
+li {
+    list-style: none;
+    /* border: 2px solid red; */
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+div.video-wrap {
+    /* border: 2px solid red; */
+    line-height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+div.film-title {
+    position: absolute;
+    bottom: .2rem;
+    left: 1rem;
+}
+
+div.film-title p {
+    font-family: var(--font-humane);
+    text-transform: uppercase;
+    color: var(--color-mint);
+    font-size: 2rem;
+    line-height: 1;
+    margin: 0;
+}
+
+video {
+    max-width: 100%;
+}
+
+@media (min-width: 768px) {
+/* tablet */
+}
+
+@media (min-width: 1024px) {
+/*laptops*/
+    ul {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 2.6rem;
+        column-gap: 1.8rem;
+    }
+
+    div.film-title p {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+ /* desktops */
+}
+</style>
+
+<script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger) 
+
+gsap.utils.toArray(".film-grid-item").forEach(item => {
+  gsap.from(item, {
+    opacity: 0,
+    y: 50,
+    duration: 0.8,
+    ease: "sine.out",
+    scrollTrigger: {
+      trigger: item,
+      start: "top 90%"
+    }
+  });
+});
+</script>

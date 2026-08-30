@@ -2,7 +2,8 @@
 import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
-  fonts: [{
+  fonts: [
+  {
     provider: fontProviders.local(),
     name: "Humane",
     cssVariable: "--font-humane",
@@ -15,9 +16,17 @@ export default defineConfig({
         src: ['./src/assets/fonts/Humane-Medium.woff2'],
         weight: 500,
         style: 'normal'
-      }]
+      }
+    ]
     }
-  }]
+  },
+  {
+    provider: fontProviders.fontsource(),
+    name: "Geist",
+    cssVariable: "--font-body",
+    weights: ["600 700 800 900"]
+  }
+]
 });
 
 

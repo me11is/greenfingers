@@ -1,0 +1,227 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+    <a class={currentPath === '/' ? 'hide' : 'show'} 
+        href={currentPath === '/films' ? '/' : '/films'}>
+        {currentPath === '/films' ? 'Home' : 'All Films'}
+    </a>
+    <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="menu-drawer"
+    >
+        <p class="menu-text">Menu</p>
+        <p class="close-text">Close</p>
+    </button>
+</header>
+
+<aside class="menu-drawer">
+    <ul>
+    <li class="menu-items"><a href="/#hero">Home</a></li>
+    <li class="menu-items"><a href="/#films">Recent Films</a></li>
+    <li class="menu-items"><a href="/films">All Films</a></li>
+    <li class="menu-items"><a href="/#about">Meet The Fingers</a></li>
+    <li class="menu-items"><a href="#contact">Get in touch</a></li>
+    </ul>
+</aside>
+
+<style>
+header {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    color: var(--color-mint);
+    font-family: var(--font-humane);
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--color-mint)
+}
+
+header a.hide {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.menu-toggle {
+    all: unset;
+    color: var(--color-mint);
+    font-family: var(--font-humane);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 4;
+    height: fit-content;
+    overflow: hidden;
+    padding: 0 0 0 .4rem;
+}
+
+.menu-toggle p {
+    color: var(--color-mint);
+    font-family: var(--font-humane);
+    line-height: 1;
+}
+
+.close-text {
+    position: absolute;
+    top: 0;
+}
+
+
+
+.menu-drawer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    width: calc(100vw - .6rem);
+    height: 60vh;
+    padding: 1rem 1.2rem;
+    margin-top: .3rem;
+    margin-right: .3rem;
+    border-radius: .3rem;
+    background-color: #0f0f0f;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transform: scale3d(0.1,0.1,0.1);
+    opacity: 0;
+    transform-origin: top right;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+ul li {
+    /* transform: translateY(-2rem);
+    opacity: 0; */
+    /* border: 2px solid red; */
+}
+
+ul li a {
+    text-decoration: none;
+    font-family: var(--font-humane);
+    color: var(--color-mint);
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: .8;
+    font-size: 14vw;
+}
+
+@media (min-width: 768px) {
+  /* tablet */
+  header {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* laptops */
+  .menu-drawer {
+    width: 40vw;
+    height: calc(100% - .6rem);
+    padding: 2rem;
+  }
+
+  ul li a {
+    font-size: 9vw;
+  }
+}
+
+@media (min-width: 1200px) {
+ /* desktops */
+}
+</style>
+
+<script>
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText) 
+const closeSplit = SplitText.create(".close-text", { type: "chars" });
+const menuSplit = SplitText.create(".menu-text", { type: "chars" });
+
+let tl = gsap.timeline({ paused: true, reversed: true })
+
+let buttonHeight = gsap.getProperty(".menu-toggle", "height")
+console.log(buttonHeight)
+
+tl.to(".menu-drawer", {
+    scale: 1,
+    opacity: 1,
+    duration: 0.6,
+    ease: "back.out(2)",
+    easeReverse: "power2.out",
+}).to(menuSplit.chars, {
+    y: -buttonHeight,
+    stagger: .05,
+    duration: .6,
+    delay: -.6,
+    ease: "back.out(1.7)"
+}).from(closeSplit.chars, {
+    y: buttonHeight,
+    stagger: .05,
+    duration: .6,
+    delay: -.8,
+    ease: "back.out(1.7)"
+}).from(".menu-items", {
+    y: 50,
+    opacity: 0,
+    duration: .6,
+    ease: "power2.out",
+    stagger: .1,
+    delay: -.2
+})
+
+const toggle = document.querySelector(".menu-toggle");
+const menuLinks = document.querySelectorAll(".menu-drawer a");
+
+toggle.addEventListener("click", () => {
+  if (tl.reversed()) {
+    tl.timeScale(1).play();
+  } else {
+    tl.timeScale(2).reverse();
+  }
+});
+
+menuLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href");
+
+    // close menu
+    tl.timeScale(2).reverse();
+
+    // contact = scroll to very bottom
+    if (href === "#contact") {
+      e.preventDefault();
+
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth"
+      });
+    }
+  });
+});
+
+
+</script>

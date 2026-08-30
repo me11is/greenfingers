@@ -3,39 +3,39 @@ title: Anti-Chew
 year: 2023
 synopsis: A Comedy Sketch about MisophoniaA Comedy Sketch about Misophonia
 cast: |-
-  \- Lucy Hilton Jones
+  Lucy Hilton Jones
 
-  \- Patrick Capaloff-Fowler
+  Patrick Capaloff-Fowler
 
-  \- Sam O'Leary
+  Sam O'Leary
 
-  \- Julie Burrows
+  Julie Burrows
 crew: |-
-  \- Directors - Elliot Taylor & Lucy Hilton Jones
+  Directors - Elliot Taylor & Lucy Hilton Jones
 
-  \- Writers - Lucy Hilton Jones & Dann Cooper
+  Writers - Lucy Hilton Jones & Dann Cooper
 
-  \- Producer - Julie Burrows
+  Producer - Julie Burrows
 
-  \- Director of Photography - Dann Cooper
+  Director of Photography - Dann Cooper
 
-  \- 1st AC - Adam Sheldon
+  1st AC - Adam Sheldon
 
-  \- Gaffer - Theo Kirkpatrick
+  Gaffer - Theo Kirkpatrick
 
-  \- Spark - AmyJane Scott
+  Spark - AmyJane Scott
 
-  \- Sound Recordist - Alex Gowler
+  Sound Recordist - Alex Gowler
 
-  \- Colourist - Alannah Miejluk
+  Colourist - Alannah Miejluk
 
-  \- Sound Mix  - Dissolve Audio
+  Sound Mix  - Dissolve Audio
 
-  \- Graphics - Ellen Hunt
+  Graphics - Ellen Hunt
 
-  \- Catering - Kasia Siwilewicz
+  Catering - Kasia Siwilewicz
 
-  \- Lighting Hire - Drop City
+  Lighting Hire - Drop City
 directors: Lucy Hilton-Jones & Elliot Taylor
 link: https://www.youtube.com/embed/UrxinKeLaUU
 clip: src/assets/images/ac.m4v

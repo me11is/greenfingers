@@ -1,0 +1,129 @@
+---
+import Image from "astro/components/Image.astro";
+import Lucy from '././src/assets/images/team/lucy.jpeg';
+import Elliot from '././src/assets/images/team/elliot.jpeg';
+import Dann from '././src/assets/images/team/dann.jpeg';
+import SectionHeader from "../SectionHeader.astro";
+
+---
+<section id="about">
+    <SectionHeader>Meet the fingers</SectionHeader>
+    <div>
+        <div class="intro">
+            <p>Greenfingers is an internationally award-winning film collective comprised of directors Elliot Taylor and Lucy Hilton-Jones, and Director of Photography Dann Cooper. Based in Manchester, they strive to make content that reminds us we’re just silly little specks on a silly little floating rock. Their films are potent cocktails that blend a dash of horror with a glug of the surreal and lashings of daftness.</p>
+            <p>Guzzle down their genre-bending creations like a well-shaken martini: bold, bracing, and a little dangerous.</p>
+        </div>
+        <div class="portraits">
+            <Image src={Lucy} alt="Lucy Hilton-Jones" width="600" height="600" />
+            <Image src={Elliot} alt="Elliot Taylor" width="600" height="600" />
+            <Image src={Dann} alt="Dann Cooper" width="600" height="600" />
+        </div>
+        <div class="awards">
+            <ul>
+                <li>Annual Berlin Indie Film Festival 2021 - Best Comedy Winner- Total Eclipse of the Heart</li>
+                <li>The British Short Film Awards 2021 - Best Comedy Finalist- Total Eclipse of the Heart</li>
+                <li>Castaway Film Festival 2021 - Judge’s Vote Winner - Total Eclipse of the Heart</li>
+                <li>Kino London 2022 - Official Selection - Total Eclipse of the Heart</li>
+                <li>Filmed Up 2022 - Audience Award Winner - Nanny Neigh Neigh</li>
+                <li>Kino London - ‘Film of the Week’ 2023 - Nanny Neigh Neigh</li>
+                <li>Berlin Indie Film Festival 2023 - Best Comedy Winner- Brasslit</li>
+                <li>Toronto International Women Film Festival 2023 - Best Comedy Winner- Brasslit</li>
+                <li>Brighton Rocks International Film Festival 2024 - Official Selection - Brasslit</li>
+                <li>Comedy Short Awards 2024 - Best Ensemble - Bin Day</li>
+                <li>Romford Film Festival 2024 - Best Low Budget Short - Bin Day</li>
+                <li>Manchester Film Festival 2024 -Official Selection - Bin Day</li>
+                <li>Kino London - ‘Film of the Week’ 2024- Hold My Hand</li>
+            </ul>
+        </div>
+    </div> 
+</section>
+
+<style>
+section {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--color-mint);
+}
+
+.intro {
+    max-width: 90vw;
+    line-height: 1.3;
+    font-size: .9rem;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.portraits {
+    width: 100%;
+    display: grid;
+    margin-top: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.portraits img {
+    max-width: 90%;
+    height: auto;
+    aspect-ratio: 1 / 1.5;
+    object-fit: cover;
+    border-radius: .4rem;
+}
+
+.awards ul {
+    list-style: none;
+    font-size: .6rem;
+    margin-top: 3rem;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 4rem;
+}
+
+.portraits img {
+  will-change: transform, opacity;
+}
+
+@media (min-width: 768px) {
+  /* tablet */
+}
+
+@media (min-width: 1024px) {
+  /* laptops */
+}
+
+@media (min-width: 1200px) {
+ /* desktops */
+}
+</style>
+
+<script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const items = gsap.utils.toArray(".portraits img");
+
+gsap.from(items, {
+  x: i => [
+    window.innerWidth * 0.9,
+    window.innerWidth * 0.65,
+    window.innerWidth * 0.4
+  ][i],
+
+  y: () => gsap.utils.random(
+    -window.innerHeight * 0.2,
+    window.innerHeight * 0.2
+  ),
+
+  rotation: () => gsap.utils.random(-45, 45),
+
+  opacity: 0,
+  ease: "none",
+
+  scrollTrigger: {
+    trigger: ".portraits",
+    start: "top bottom",
+    end: "+=40%",
+    scrub: 1
+  }
+});
+</script>

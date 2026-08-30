@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import FilmGrid from '../components/FilmGrid.astro';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+const films = await getCollection('films')
+---
+<Layout>
+    <Navbar />
+    <section>
+        <h2>All Films</h2>
+        <FilmGrid films={films}  />
+    </section>
+</Layout>
+
+<style>
+    section {
+        padding: 6rem 2rem;
+    }
+</style>

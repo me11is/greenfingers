@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import FilmGrid from '../FilmGrid.astro';
+import SectionHeader from '../SectionHeader.astro';
+const films = await getCollection('films')
+---
+
+<section aria-label="Films" class="films" id="films">
+    <SectionHeader>Our Recent Films</SectionHeader>
+    <!-- <h2>Our Recent Films</h2> -->
+    <FilmGrid films={films} limit={4} />
+    <div class="all-films">
+        <a class="all-films-button" href="/films">
+            <p>View the rest of our films</p>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e2f5e0" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+            </div>
+        </a>
+    </div>
+</section>
+
+<style>
+
+.films {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10rem;
+}
+
+.all-films {
+    width: 90vw;
+    margin-top: 3rem;
+}
+
+.all-films-button {
+    background-color: var(--color-mint);
+    border-radius: 6px;
+    letter-spacing: -0.75px;
+    display: flex;
+    padding: .2rem;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    padding-left: 1rem;
+    font-family: var(--font-inter);
+    text-decoration: none;
+}
+
+.all-films-button p {
+    color: var(--color-dark-green);
+}
+
+.all-films-button .icon {
+    background: var(--color-dark-green);
+    height: 100%;
+    padding: 1rem;
+    line-height: 0;
+    border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+/* tablet */
+}
+
+@media (min-width: 1024px) {
+/*laptops*/
+    .all-films {
+        max-width: 700px;
+        width: 50vw;
+        margin-top: 5rem;
+        
+    }
+
+    .all-films-button {
+        font-weight: 800;
+    }
+}
+
+@media (min-width: 1200px) {
+ /* desktops */
+}
+
+</style>

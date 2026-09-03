@@ -1,7 +1,7 @@
 ---
 title: Anti-Chew
 year: 2023
-synopsis: A Comedy Sketch about MisophoniaA Comedy Sketch about Misophonia
+synopsis: A Comedy Sketch about Misophonia
 cast: |-
   Lucy Hilton Jones
 

@@ -1,10 +1,28 @@
-<h2 class="section-header-text">
+<h2 class="section-header">
+  <span class="text">
     <slot />
+  </span>
 </h2>
 
 <style>
     h2 {
         margin-bottom: 1rem;
+    }
+
+    .section-header {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .replacement {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .char {
+        display: inline-block;
     }
 </style>
 
@@ -12,24 +30,53 @@
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
+const headers = document.querySelectorAll(".section-header");
 
-gsap.utils.toArray(".section-header-text").forEach((header) => {
-  const split = SplitText.create(header, {
-    type: "words"
-  });
+headers.forEach(header => {
+    const original = header.querySelector(".text");
 
-  gsap.from(split.words, {
-    y: 40,
-    opacity: 0,
-    stagger: 0.15,
-    duration: 0.8,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: header,
-      start: "top 80%"
-    }
-  });
+    const duplicate = original.cloneNode(true);
+    duplicate.classList.add("replacement");
+    header.appendChild(duplicate);
+
+    const originalSplit = SplitText.create(original, {
+        type: "chars"
+    });
+
+    const replacementSplit = SplitText.create(duplicate, {
+        type: "chars"
+    });
+
+    gsap.set(replacementSplit.chars, {
+        yPercent: 100
+    });
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: header,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+            markers: true
+        }
+    })
+    .to(originalSplit.chars, {
+        yPercent: -100,
+        stagger: 0.03,
+        duration: 0.4,
+        ease: "power2.out"
+    }, 0)
+    .to(replacementSplit.chars, {
+        yPercent: 0,
+        stagger: 0.03,
+        duration: 0.4,
+        ease: "power2.out"
+    }, 0);
 });
+
 </script>
+
+
+

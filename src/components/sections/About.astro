@@ -8,9 +8,10 @@ import SectionHeader from "../SectionHeader.astro";
 ---
 <section id="about">
     <SectionHeader>Meet the fingers</SectionHeader>
-    <div>
+    <div class="container">
         <div class="intro">
-            <p>Greenfingers is an internationally award-winning film collective comprised of directors Elliot Taylor and Lucy Hilton-Jones, and Director of Photography Dann Cooper. Based in Manchester, they strive to make content that reminds us we’re just silly little specks on a silly little floating rock. Their films are potent cocktails that blend a dash of horror with a glug of the surreal and lashings of daftness.</p>
+            <p>Greenfingers is an internationally award-winning film collective comprised of directors Elliot Taylor and Lucy Hilton-Jones, and Director of Photography Dann Cooper.</p>
+            <p>Based in Manchester, they strive to make content that reminds us we’re just silly little specks on a silly little floating rock. Their films are potent cocktails that blend a dash of horror with a glug of the surreal and lashings of daftness.</p>
             <p>Guzzle down their genre-bending creations like a well-shaken martini: bold, bracing, and a little dangerous.</p>
         </div>
         <div class="portraits">
@@ -54,6 +55,10 @@ section {
     text-align: justify;
 }
 
+.intro p {
+    margin-bottom: 1rem;
+}
+
 .portraits {
     width: 100%;
     display: grid;
@@ -88,6 +93,37 @@ section {
 
 @media (min-width: 1024px) {
   /* laptops */
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .intro {
+        font-size: 1.2rem;
+    }
+
+    .awards ul {
+        font-size: 1rem;
+        margin-top: 0;
+    }
+
+    .portraits img:nth-child(1) {
+        transform: rotate(-2deg);
+    }
+
+    .portraits img:nth-child(2) {
+        transform: rotate(3deg);
+        transform: translateY(100px);
+    }
+
+    .portraits img:nth-child(3) {
+        transform: rotate(-4deg);
+        transform: translateY(200px);
+    }
+
+
+
 }
 
 @media (min-width: 1200px) {

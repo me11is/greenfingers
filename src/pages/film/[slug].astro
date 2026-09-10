@@ -54,7 +54,7 @@ const parsedCast = marked.parse(cast)
   }
 
   .youtube-container {
-    max-width: 60vw;
+    max-width: 90vw;
     margin: 0 auto;
   }
 
@@ -80,4 +80,11 @@ const parsedCast = marked.parse(cast)
     align-items: flex-end;
     text-align: right;
   }
+
+@media (min-width: 1024px) {
+  .youtube-container {
+    max-width: 60vw;
+    margin: 0 auto;
+  }
+}
 </style>

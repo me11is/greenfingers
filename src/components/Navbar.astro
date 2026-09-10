@@ -19,12 +19,18 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <aside class="menu-drawer">
-    <ul>
-    <li class="menu-items"><a href="/#hero">Home</a></li>
-    <li class="menu-items"><a href="/#films">Recent Films</a></li>
-    <li class="menu-items"><a href="/films">All Films</a></li>
-    <li class="menu-items"><a href="/#about">Meet The Fingers</a></li>
-    <li class="menu-items"><a href="#contact">Get in touch</a></li>
+    <ul class="menu-items-list">
+        <li class="menu-items"><a href="/#hero">Home</a></li>
+        <li class="menu-items"><a href="/#films">Recent Films</a></li>
+        <li class="menu-items"><a href="/films">All Films</a></li>
+        <li class="menu-items"><a href="/#about">Meet The Fingers</a></li>
+        <li class="menu-items"><a href="#contact">Get in touch</a></li>
+    </ul>
+    <ul class="socials-list">
+        <li><a>Instagram</a></li>
+        <li><a>Vimeo</a></li>
+        <li><a>YouTube</a></li>
+        <li><a>TikTok</a></li>
     </ul>
 </aside>
 
@@ -37,7 +43,7 @@ header {
     left: 0;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 2rem;
     color: var(--color-mint);
     font-family: var(--font-humane);
     font-size: 2rem;
@@ -46,7 +52,8 @@ header {
 
 header a {
     text-decoration: none;
-    color: var(--color-mint)
+    color: var(--color-mint);
+    line-height: 1;
 }
 
 header a.hide {
@@ -112,13 +119,7 @@ ul {
     padding: 0;
 }
 
-ul li {
-    /* transform: translateY(-2rem);
-    opacity: 0; */
-    /* border: 2px solid red; */
-}
-
-ul li a {
+.menu-items-list li a {
     text-decoration: none;
     font-family: var(--font-humane);
     color: var(--color-mint);
@@ -126,6 +127,20 @@ ul li a {
     font-weight: 900;
     line-height: .8;
     font-size: 14vw;
+}
+
+.socials-list  {
+    color: var(--color-mint);
+    font-size: 2rem;
+    padding-top: 2rem;
+    opacity: .6;
+    display: flex;
+    gap: .6rem;
+}
+
+.socials-list li a {
+    font-family: var(--font-humane);
+    text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
@@ -143,7 +158,7 @@ ul li a {
     padding: 2rem;
   }
 
-  ul li a {
+  .menu-items-list li a {
     font-size: 9vw;
   }
 }
@@ -191,6 +206,9 @@ tl.to(".menu-drawer", {
     ease: "power2.out",
     stagger: .1,
     delay: -.2
+}).from(".socials-list li", {
+    opacity: 0,
+    x: -20
 })
 
 const toggle = document.querySelector(".menu-toggle");

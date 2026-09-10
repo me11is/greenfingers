@@ -1,13 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
-import heroPoster from '../../assets/images/hero-poster.jpg';
-
-const poster = await getImage({
-  src: heroPoster,
-  width: 1920,
-  format: 'webp',
-  quality: 100,
-});
+import Logo from "./src/assets/greenfingers.svg";
 ---
 
 <section class="hero" id="hero">
@@ -18,7 +11,6 @@ const poster = await getImage({
     muted
     loop
     playsinline
-    poster={poster}
     aria-hidden="true"
   >
     <source
@@ -29,7 +21,7 @@ const poster = await getImage({
   </video>
 
   <div class="hero-content">
-    <h1>Greenfingers</h1>
+    <Logo  />
   </div>
 
   <div class="fader"></div>
@@ -41,8 +33,12 @@ const poster = await getImage({
   position: relative;
   width: 100vw;
   min-height: 100vh;
-  min-height: 100svh;
   height: 120vh;
+}
+
+.hero svg {
+  max-width: 60vw;
+  margin-bottom: -3rem;
 }
 
 .fader {
@@ -80,23 +76,22 @@ const poster = await getImage({
   padding-bottom: 1rem;
 }
 
-.hero-content h1 {
-  font-size: 32vw;
-  line-height: 0.6;
-}
-
 @media (min-width: 768px) {
   /* tablet */
+    .hero svg {
+      margin-bottom: -1rem;
+    }
 }
 
 @media (min-width: 1024px) {
   /* laptops */
+      .hero svg {
+      margin-bottom: 0rem;
+    }
 }
 
 @media (min-width: 1200px) {
-  .hero-content h1 {
-    font-size: 22vw;
-  }
+
 }
 
 

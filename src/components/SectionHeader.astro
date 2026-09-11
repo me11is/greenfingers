@@ -1,28 +1,32 @@
 ---
 interface Props {
-  text: string;
+    text: string;
 }
 
 const { text } = Astro.props;
 
 const letters = [...text];
 
-const styled = letters.map(letter => ({
-  letter,
-  thin: letter.trim() !== "" && Math.random() < 0.3
+const styled = letters.map((letter) => ({
+    letter,
+    thin: letter.trim() !== "" && Math.random() < 0.3,
 }));
 ---
+
 <h2 class="section-header">
     <span class="text">
-        {styled.map(({ letter, thin }) => (
-            <span class:list={{ thin }}>{letter}</span>
-        ))}
+        {
+            styled.map(({ letter, thin }) => (
+                <span class:list={{ thin }}>{letter}</span>
+            ))
+        }
     </span>
 </h2>
 
 <style>
     h2 {
         margin-bottom: 1rem;
+        font-size: 8rem;
     }
 
     .section-header span {
@@ -32,10 +36,27 @@ const styled = letters.map(letter => ({
     .section-header span.thin {
         font-weight: 100;
     }
+
+    @media (min-width: 768px) {
+        /* tablet */
+        h2 {
+            font-size: 9rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        /*laptops*/
+        h2 {
+            font-size: 10rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        /* desktops */
+        h2 {
+            font-size: 12rem;
+        }
+    }
 </style>
 
-<script>
-</script>
-
-
-
+<script></script>

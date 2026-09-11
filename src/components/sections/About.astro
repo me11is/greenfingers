@@ -4,112 +4,215 @@ import lucy from "../../assets/images/team/lucy.jpeg";
 import dann from "../../assets/images/team/dann.jpeg";
 import elliot from "../../assets/images/team/elliot.jpeg";
 import SectionHeader from "../SectionHeader.astro";
-
 ---
+
 <section id="about">
-    <SectionHeader text="Meet the fingers" />
-    <div class="container">
-        <div class="portraits">
-            <Image src={lucy} alt="Lucy Hilton-Jones" width="600" height="600" />
-            <Image src={elliot} alt="Elliot Taylor" width="600" height="600" />
-            <Image src={dann} alt="Dann Cooper" width="600" height="600" />
-        </div>
-        <div class="intro">
-            <p>Greenfingers is an internationally award-winning film collective comprised of directors Elliot Taylor and Lucy Hilton-Jones, and Director of Photography Dann Cooper.</p>
-            <p>Based in Manchester, they strive to make content that reminds us we’re just silly little specks on a silly little floating rock. Their films are potent cocktails that blend a dash of horror with a glug of the surreal and lashings of daftness.</p>
-            <p>Guzzle down their genre-bending creations like a well-shaken martini: bold, bracing, and a little dangerous.</p>
-        </div>
-        <div class="awards">
-            <ul>
-                <li>Annual Berlin Indie Film Festival 2021 - Best Comedy Winner- Total Eclipse of the Heart</li>
-                <li>The British Short Film Awards 2021 - Best Comedy Finalist- Total Eclipse of the Heart</li>
-                <li>Castaway Film Festival 2021 - Judge’s Vote Winner - Total Eclipse of the Heart</li>
-                <li>Kino London 2022 - Official Selection - Total Eclipse of the Heart</li>
-                <li>Filmed Up 2022 - Audience Award Winner - Nanny Neigh Neigh</li>
-                <li>Kino London - ‘Film of the Week’ 2023 - Nanny Neigh Neigh</li>
-                <li>Berlin Indie Film Festival 2023 - Best Comedy Winner- Brasslit</li>
-                <li>Toronto International Women Film Festival 2023 - Best Comedy Winner- Brasslit</li>
-                <li>Brighton Rocks International Film Festival 2024 - Official Selection - Brasslit</li>
-                <li>Comedy Short Awards 2024 - Best Ensemble - Bin Day</li>
-                <li>Romford Film Festival 2024 - Best Low Budget Short - Bin Day</li>
-                <li>Manchester Film Festival 2024 -Official Selection - Bin Day</li>
-                <li>Kino London - ‘Film of the Week’ 2024- Hold My Hand</li>
-            </ul>
-        </div>
-    </div> 
+  <SectionHeader text="Meet the fingers" />
+  <div class="container">
+    <div class="portraits">
+      <Image
+        class="p1"
+        src={lucy}
+        alt="Lucy Hilton-Jones"
+        width="600"
+        height="600"
+      />
+      <Image
+        class="p2"
+        src={elliot}
+        alt="Elliot Taylor"
+        width="600"
+        height="600"
+      />
+      <Image class="p3" src={dann} alt="Dann Cooper" width="600" height="600" />
+    </div>
+    <div class="intro">
+      <p>
+        Greenfingers is an internationally award-winning film collective
+        comprised of directors Elliot Taylor and Lucy Hilton-Jones, and Director
+        of Photography Dann Cooper.
+      </p>
+      <p>
+        Based in Manchester, they strive to make content that reminds us we’re
+        just silly little specks on a silly little floating rock. Their films
+        are potent cocktails that blend a dash of horror with a glug of the
+        surreal and lashings of daftness.
+      </p>
+      <p>
+        Guzzle down their genre-bending creations like a well-shaken martini:
+        bold, bracing, and a little dangerous.
+      </p>
+    </div>
+    <div class="awards">
+      <ul>
+        <li>
+          Annual Berlin Indie Film Festival 2021 - Best Comedy Winner- Total
+          Eclipse of the Heart
+        </li>
+        <li>
+          The British Short Film Awards 2021 - Best Comedy Finalist- Total
+          Eclipse of the Heart
+        </li>
+        <li>
+          Castaway Film Festival 2021 - Judge’s Vote Winner - Total Eclipse of
+          the Heart
+        </li>
+        <li>
+          Kino London 2022 - Official Selection - Total Eclipse of the Heart
+        </li>
+        <li>Filmed Up 2022 - Audience Award Winner - Nanny Neigh Neigh</li>
+        <li>Kino London - ‘Film of the Week’ 2023 - Nanny Neigh Neigh</li>
+        <li>Berlin Indie Film Festival 2023 - Best Comedy Winner- Brasslit</li>
+        <li>
+          Toronto International Women Film Festival 2023 - Best Comedy Winner-
+          Brasslit
+        </li>
+        <li>
+          Brighton Rocks International Film Festival 2024 - Official Selection -
+          Brasslit
+        </li>
+        <li>Comedy Short Awards 2024 - Best Ensemble - Bin Day</li>
+        <li>Romford Film Festival 2024 - Best Low Budget Short - Bin Day</li>
+        <li>Manchester Film Festival 2024 -Official Selection - Bin Day</li>
+        <li>Kino London - ‘Film of the Week’ 2024- Hold My Hand</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <style>
-section {
+  section {
     font-family: var(--font-body);
     font-size: 1.2rem;
     color: var(--color-mint);
     overflow-x: clip;
-}
+  }
 
-.portraits {
+  .portraits {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-}
+  }
 
-.portraits img {
+  .portraits img {
     max-width: 95%;
     height: auto;
     aspect-ratio: 1 / 1.3;
     object-fit: cover;
-    border-radius: .3rem;
+    border-radius: 0.3rem;
     border: 1px solid #111111;
     box-shadow: -3px 3px 0px 0px #111111;
-}
+  }
 
-.intro {
+  .intro {
     max-width: 90vw;
     line-height: 1.4;
-    font-size: .8rem;
+    font-size: 1rem;
     letter-spacing: -4%;
-    font-weight: 300;
+    font-weight: 400;
     text-align: justify;
     margin-top: 1.8rem;
-}
+  }
 
-.intro p {
+  .intro p {
     margin-bottom: 1rem;
-}
+  }
 
-
-.awards ul {
+  .awards ul {
     list-style: none;
-    font-size: .6rem;
+    font-size: 0.6rem;
     margin-top: 3rem;
     text-align: left;
     padding: 0;
     margin-bottom: 4rem;
-}
-
-.portraits img {
-  will-change: transform, opacity;
-}
-
-@media (min-width: 768px) {
-  /* tablet */
-  .intro {
-    font-size: 1.2rem;
   }
-}
 
-@media (min-width: 1024px) {
-  /* laptops */
-}
+  .portraits img {
+    will-change: transform, opacity;
+  }
 
-@media (min-width: 1200px) {
- /* desktops */
-}
+  @media (min-width: 768px) {
+    /* tablet */
+    .intro {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* laptops */
+    #about {
+      position: relative;
+      height: 100vh;
+      border: 2px solid red;
+      /* overflow: hidden; */
+    }
+
+    .intro {
+      max-width: 55vw;
+    }
+
+    .portraits {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      max-width: 20vw;
+      position: absolute;
+      top: 5vh;
+      right: 15vw;
+      will-change: transform;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    /* desktops */
+    .portraits {
+      max-width: 17.5vw;
+    }
+
+    .intro {
+      font-weight: 400;
+    }
+  }
 </style>
 
 <script>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
+
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 1024px)", () => {
+    const portraits = document.querySelector(".portraits");
+
+    const angle = (5 * Math.PI) / 180;
+
+    const distance = window.innerHeight;
+
+    const xDistance = Math.tan(angle) * distance;
+
+    gsap.set(portraits, {
+      rotation: 5,
+      x: 0,
+      y: distance,
+      transformOrigin: "center center",
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top bottom",
+        end: "bottom 50%",
+        scrub: 1,
+        markers: true,
+      },
+    });
+
+    tl.to(portraits, {
+      x: xDistance,
+      y: -distance,
+      ease: "none",
+    });
+  });
 </script>

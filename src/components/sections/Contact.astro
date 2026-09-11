@@ -1,50 +1,64 @@
 ---
 import Plane from "../../assets/plane.svg";
 import FooterSvg from "../../assets/footer.svg";
+import { getCollection } from "astro:content";
+const films = await getCollection('films')
 ---
 
 <section id="contact">
     <h3>
-        Want to chat? Get in touch using the email below or any of our socials
+        Want to chat? Get in touch using the email below or contact us on any of our socials
     </h3>
-    <button class="email-button">
-        <div class="icon-with-text">
-            <Plane width="18px" />
-            <p>hello@greenfingersfilm.com</p>
+    <div class="contents">
+        <button class="email-button">
+            <div class="icon-with-text">
+                <Plane width="18px" />
+                <p>hello@greenfingersfilm.com</p>
+            </div>
+            <p class="copy-text">click to copy</p>
+        </button>
+        <div class="all-links">
+            <ul class="nav-links">
+                <li>Navigation</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#films">Films</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="/films">All Films</a></li>
+            </ul>
+            <ul class="social-links">
+                <li>Socials</li>
+                <li>
+                    <a
+                        href="https://www.instagram.com/greenfingers_film/"
+                        target="_blank">Instagram</a>
+                </li>
+                <li>
+                    <a
+                        href="https://vimeo.com/user2817712?fl=pp&fe=sh"
+                        target="_blank">Vimeo</a>
+                </li>
+                <li>
+                    <a
+                        href="https://www.youtube.com/@greenfingersfilm"
+                        target="_blank">YouTube</a>
+                </li>
+                <li>
+                    <a
+                        href="https://www.tiktok.com/@greenfingersfilm"
+                        target="_blank">TikTok</a>
+                </li>
+            </ul>
+            <ul class="film-links">
+                <li>Films</li>
+                {
+                    films.map((film) => (
+                        <li>
+                            <a href={'film/' + film.data.title.toLowerCase().replaceAll(' ', '-')}>{film.data.title}</a>
+                        </li>
+                    ))
+                }
+            </ul>
         </div>
-        <p class="copy-text">click to copy</p>
-    </button>
-    <div class="all-links">
-        <ul class="nav-links">
-            <li>Navigation</li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#films">Films</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="/films">All Films</a></li>
-        </ul>
-        <ul class="social-links">
-            <li>Socials</li>
-            <li>
-                <a
-                    href="https://www.instagram.com/greenfingers_film/"
-                    target="_blank">Instagram</a>
-            </li>
-            <li>
-                <a
-                    href="https://vimeo.com/user2817712?fl=pp&fe=sh"
-                    target="_blank">Vimeo</a>
-            </li>
-            <li>
-                <a
-                    href="https://www.youtube.com/@greenfingersfilm"
-                    target="_blank">YouTube</a>
-            </li>
-            <li>
-                <a
-                    href="https://www.tiktok.com/@greenfingersfilm"
-                    target="_blank">TikTok</a>
-            </li>
-        </ul>
     </div>
     <div class="footer-svg-container">
         <FooterSvg />
@@ -62,6 +76,12 @@ import FooterSvg from "../../assets/footer.svg";
         letter-spacing: -3%;
         font-weight: 500;
         margin-bottom: 2rem;
+    }
+
+    .contents {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 3rem;
     }
 
     .email-button {
@@ -112,14 +132,20 @@ import FooterSvg from "../../assets/footer.svg";
         font-size: 0.7rem;
         letter-spacing: -5%;
         color: var(--color-mint);
+        display: flex;
+        flex-direction: column;
+        gap: .2rem;
     }
 
     .all-links ul li:first-child {
         opacity: 0.6;
     }
 
+    #contact .film-links {
+        display: none;
+    }
+
     .footer-svg-container {
-        /* border: 2px solid red; */
         overflow: hidden;
     }
 
@@ -157,13 +183,60 @@ import FooterSvg from "../../assets/footer.svg";
 
     @media (min-width: 1024px) {
         /* laptops */
+        h3 {
+            padding-bottom: 4rem;
+            max-width: 50vw;
+        }
+
+        .contents {
+            display: flex;
+            align-items: flex-start;
+            gap: 4rem;
+        }
+
+        .all-links {
+            margin-top: 0;
+        }
+
+        .all-links {
+            padding-left: 4rem;
+        }
+
+        .all-links ul {
+            font-size: .8rem;
+            gap: .4rem;
+        }
+
         .footer-svg-container svg {
             transform: translateY(6rem);
         }
+
+        .email-button {
+            border-radius: 999px;
+            padding: 0 1rem;
+        }
+
+
     }
 
     @media (min-width: 1200px) {
         /* desktops */
+        #contact .film-links {
+            display: flex;
+        }
+
+        .email-button {
+            max-width: 40vw;
+        }
+
+        .contents {
+            gap: 0;
+            justify-content: space-between;
+        }
+
+        .all-links {
+            justify-content: flex-end;
+        }
     }
 </style>
 

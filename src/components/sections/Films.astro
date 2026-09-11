@@ -6,8 +6,7 @@ const films = await getCollection('films')
 ---
 
 <section aria-label="Films" class="films" id="films">
-    <SectionHeader>Our Recent Films</SectionHeader>
-    <!-- <h2>Our Recent Films</h2> -->
+    <SectionHeader text="Our Recent Films" />
     <FilmGrid films={films} limit={4} />
     <div class="all-films">
         <a class="all-films-button" href="/films">
@@ -62,15 +61,17 @@ const films = await getCollection('films')
 
 @media (min-width: 768px) {
 /* tablet */
+    .all-films {
+        max-width: 700px;
+        width: 60vw;
+        margin-top: 5rem; 
+    }
 }
 
 @media (min-width: 1024px) {
 /*laptops*/
     .all-films {
-        max-width: 700px;
         width: 50vw;
-        margin-top: 5rem;
-        
     }
 
     .all-films-button {

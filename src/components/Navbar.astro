@@ -27,10 +27,10 @@ const currentPath = Astro.url.pathname;
         <li class="menu-items"><a href="#contact">Get in touch</a></li>
     </ul>
     <ul class="socials-list">
-        <li><a>Instagram</a></li>
-        <li><a>Vimeo</a></li>
-        <li><a>YouTube</a></li>
-        <li><a>TikTok</a></li>
+        <li><a href="https://www.instagram.com/greenfingers_film/" target="_blank" class="social-items">Instagram</a></li>
+        <li><a href="https://vimeo.com/user2817712?fl=pp&fe=sh" target="_blank" class="social-items">Vimeo</a></li>
+        <li><a href="https://www.youtube.com/@greenfingersfilm" target="_blank" class="social-items">YouTube</a></li>
+        <li><a href="https://www.tiktok.com/@greenfingersfilm" target="_blank" class="social-items">TikTok</a></li>
     </ul>
 </aside>
 
@@ -43,7 +43,7 @@ header {
     left: 0;
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem;
     color: var(--color-mint);
     font-family: var(--font-humane);
     font-size: 2rem;
@@ -83,8 +83,6 @@ header a.hide {
     position: absolute;
     top: 0;
 }
-
-
 
 .menu-drawer {
     display: flex;
@@ -138,9 +136,11 @@ ul {
     gap: .6rem;
 }
 
-.socials-list li a {
+.social-items {
     font-family: var(--font-humane);
     text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(-20px);
 }
 
 @media (min-width: 768px) {
@@ -206,9 +206,10 @@ tl.to(".menu-drawer", {
     ease: "power2.out",
     stagger: .1,
     delay: -.2
-}).from(".socials-list li", {
-    opacity: 0,
-    x: -20
+}).to(".social-items", {
+    opacity: 1,
+    x: 0,
+    delay: -.6
 })
 
 const toggle = document.querySelector(".menu-toggle");

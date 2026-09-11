@@ -7,17 +7,17 @@ import SectionHeader from "../SectionHeader.astro";
 
 ---
 <section id="about">
-    <SectionHeader>Meet the fingers</SectionHeader>
+    <SectionHeader text="Meet the fingers" />
     <div class="container">
-        <div class="intro">
-            <p>Greenfingers is an internationally award-winning film collective comprised of directors Elliot Taylor and Lucy Hilton-Jones, and Director of Photography Dann Cooper.</p>
-            <p>Based in Manchester, they strive to make content that reminds us we’re just silly little specks on a silly little floating rock. Their films are potent cocktails that blend a dash of horror with a glug of the surreal and lashings of daftness.</p>
-            <p>Guzzle down their genre-bending creations like a well-shaken martini: bold, bracing, and a little dangerous.</p>
-        </div>
         <div class="portraits">
             <Image src={lucy} alt="Lucy Hilton-Jones" width="600" height="600" />
             <Image src={elliot} alt="Elliot Taylor" width="600" height="600" />
             <Image src={dann} alt="Dann Cooper" width="600" height="600" />
+        </div>
+        <div class="intro">
+            <p>Greenfingers is an internationally award-winning film collective comprised of directors Elliot Taylor and Lucy Hilton-Jones, and Director of Photography Dann Cooper.</p>
+            <p>Based in Manchester, they strive to make content that reminds us we’re just silly little specks on a silly little floating rock. Their films are potent cocktails that blend a dash of horror with a glug of the surreal and lashings of daftness.</p>
+            <p>Guzzle down their genre-bending creations like a well-shaken martini: bold, bracing, and a little dangerous.</p>
         </div>
         <div class="awards">
             <ul>
@@ -47,34 +47,36 @@ section {
     overflow-x: clip;
 }
 
-.intro {
-    max-width: 90vw;
-    line-height: 1.3;
-    font-size: .9rem;
-    font-weight: 300;
-    text-align: justify;
-}
-
-.intro p {
-    margin-bottom: 1rem;
-}
-
 .portraits {
     width: 100%;
     display: grid;
-    margin-top: 2rem;
     grid-template-columns: repeat(3, 1fr);
 }
 
 .portraits img {
     max-width: 95%;
     height: auto;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1.3;
     object-fit: cover;
-    border-radius: .4rem;
-    border: 2px solid #111111;
-    box-shadow: -6px 6px 0px 0px #111111;
+    border-radius: .3rem;
+    border: 1px solid #111111;
+    box-shadow: -3px 3px 0px 0px #111111;
 }
+
+.intro {
+    max-width: 90vw;
+    line-height: 1.4;
+    font-size: .8rem;
+    letter-spacing: -4%;
+    font-weight: 300;
+    text-align: justify;
+    margin-top: 1.8rem;
+}
+
+.intro p {
+    margin-bottom: 1rem;
+}
+
 
 .awards ul {
     list-style: none;
@@ -91,41 +93,13 @@ section {
 
 @media (min-width: 768px) {
   /* tablet */
+  .intro {
+    font-size: 1.2rem;
+  }
 }
 
 @media (min-width: 1024px) {
   /* laptops */
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-    }
-
-    .intro {
-        font-size: 1.2rem;
-    }
-
-    .awards ul {
-        font-size: 1rem;
-        margin-top: 0;
-    }
-
-    .portraits img:nth-child(1) {
-        transform: rotate(-2deg);
-    }
-
-    .portraits img:nth-child(2) {
-        transform: rotate(3deg);
-        transform: translateY(100px);
-    }
-
-    .portraits img:nth-child(3) {
-        transform: rotate(-4deg);
-        transform: translateY(200px);
-    }
-
-
-
 }
 
 @media (min-width: 1200px) {
@@ -138,31 +112,4 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const items = gsap.utils.toArray(".portraits img");
-
-gsap.from(items, {
-  x: i => [
-    window.innerWidth * 0.9,
-    window.innerWidth * 0.65,
-    window.innerWidth * 0.4
-  ][i],
-
-  y: () => gsap.utils.random(
-    -window.innerHeight * 0.2,
-    window.innerHeight * 0.2
-  ),
-
-  rotation: () => gsap.utils.random(-45, 45),
-
-  opacity: 0,
-  ease: "none",
-
-  scrollTrigger: {
-    trigger: ".portraits",
-    start: "top bottom",
-    end: "+=60%",
-    scrub: 1
-  }
-});
 </script>

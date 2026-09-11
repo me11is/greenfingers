@@ -22,9 +22,14 @@ export default defineConfig({
   },
   {
     provider: fontProviders.fontsource(),
-    name: "Geist",
+    name: "Roboto",
     cssVariable: "--font-body",
-    weights: ["600 700 800 900"]
+    weights: ["100 200 300 400 500 600 700 800 900"]
+  },{
+    provider: fontProviders.fontsource(),
+    name: "Roboto Mono",
+    cssVariable: "--font-mono",
+    weights: ["400"],
   }
 ]
 });

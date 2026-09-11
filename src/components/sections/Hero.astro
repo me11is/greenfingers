@@ -1,5 +1,5 @@
 ---
-import { getImage } from 'astro:assets';
+import { getImage } from "astro:assets";
 import Logo from "../../assets/greenfingers.svg";
 ---
 
@@ -12,87 +12,98 @@ import Logo from "../../assets/greenfingers.svg";
     loop
     playsinline
     aria-hidden="true"
+    preload="metadata"
+    poster="/src/assets/images/hero-poster.png"
   >
-    <source
-      src="/videos/hero-vid.mp4"
-      type="video/mp4"
-
-    />
+    <source src="/videos/hero-vid.webm" type="video/webm" />
+    <source src="/videos/hero-vid.mp4" type="video/mp4" />
   </video>
 
   <div class="hero-content">
-    <Logo  />
+    <Logo />
   </div>
 
   <div class="fader"></div>
-
 </section>
 
 <style>
-.hero {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
-  height: 120vh;
-}
+  .hero {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    height: 120vh;
+  }
 
-.hero svg {
-  max-width: 60vw;
-  margin-bottom: -3rem;
-}
+  .hero svg {
+    max-width: 60vw;
+    margin-bottom: -3rem;
+  }
 
-.fader {
-  width: 100%;
-  height: 20vh;
-  background: var(--dark-green);
-  background: linear-gradient(
-    180deg,
-    rgba(31, 55, 39, 0) 0%,
-    rgba(31, 55, 39, 0.5746892507002801) 39%,
-    rgba(31, 55, 39, 0.9472382703081232) 79%,
-    rgba(31, 55, 39, 1) 100%
-  );
-  position: absolute;
-  bottom: 0;
-}
+  .fader {
+    width: 100%;
+    height: 20vh;
+    background: var(--dark-green);
+    background: linear-gradient(
+      180deg,
+      rgba(31, 55, 39, 0) 0%,
+      rgba(31, 55, 39, 0.5746892507002801) 39%,
+      rgba(31, 55, 39, 0.9472382703081232) 79%,
+      rgba(31, 55, 39, 1) 100%
+    );
+    position: absolute;
+    bottom: 0;
+  }
 
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding-left: 1.6rem;
-  padding-bottom: 1rem;
-}
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-left: 1.6rem;
+    padding-bottom: 1rem;
+  }
 
-@media (min-width: 768px) {
-  /* tablet */
+  video {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  video.ready {
+    opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    /* tablet */
     .hero svg {
       margin-bottom: -1rem;
     }
-}
+  }
 
-@media (min-width: 1024px) {
-  /* laptops */
-      .hero svg {
+  @media (min-width: 1024px) {
+    /* laptops */
+    .hero svg {
       margin-bottom: 0rem;
     }
-}
+  }
 
-@media (min-width: 1200px) {
-
-}
-
-
+  @media (min-width: 1200px) {
+  }
 </style>
+
+<script>
+  const video = document.getElementById("hero-video");
+  video.addEventListener("canplay", () => {
+    video.classList.add("ready");
+  });
+</script>

@@ -94,8 +94,8 @@ header a.hide {
     right: 0;
     z-index: 2;
     width: calc(100vw - .6rem);
-    height: 60vh;
-    padding: 1rem 1.2rem;
+    /* height: 60vh; */
+    padding: 4rem 1.2rem 1rem;
     margin-top: .3rem;
     margin-right: .3rem;
     border-radius: .3rem;
@@ -118,20 +118,28 @@ ul {
 }
 
 .menu-items-list li a {
-    text-decoration: none;
     font-family: var(--font-humane);
     color: var(--color-mint);
-    text-transform: uppercase;
     font-weight: 900;
     line-height: .8;
     font-size: 14vw;
+}
+
+.menu-drawer ul li a {
+    opacity: 0.7;
+    transition: opacity ease-in .2s;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menu-drawer ul li a:hover {
+    opacity: 1 !important;
 }
 
 .socials-list  {
     color: var(--color-mint);
     font-size: 2rem;
     padding-top: 2rem;
-    opacity: .6;
     display: flex;
     gap: .6rem;
 }
@@ -139,8 +147,8 @@ ul {
 .social-items {
     font-family: var(--font-humane);
     text-transform: uppercase;
-    opacity: 0;
     transform: translateX(-20px);
+    text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -206,9 +214,9 @@ tl.to(".menu-drawer", {
     ease: "power2.out",
     stagger: .1,
     delay: -.2
-}).to(".social-items", {
-    opacity: 1,
-    x: 0,
+}).from(".social-items", {
+    opacity: 0,
+    x: -20,
     delay: -.6
 })
 

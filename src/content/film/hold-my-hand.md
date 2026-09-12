@@ -4,30 +4,30 @@ year: 2024
 synopsis: In this recognisable advert, a gang of giddy sunseekers go on a trip
   they’ll never forget…
 cast: |-
-  \- Alistair Goldie
+  Alistair Goldie
 
-  \- Alex Zolghadriha
+  Alex Zolghadriha
 
-  \- Kara Hakanson
+  Kara Hakanson
 
-  \- Lucy Hilton-Jones
+  Lucy Hilton-Jones
 crew: |-
-  \- Directed by - Lucy Hilton-Jones and Elliot Taylor
+  Directed by - Lucy Hilton-Jones and Elliot Taylor
 
-  \- Written by - Lucy Hilton-Jones and Elliot Taylor
+  Written by - Lucy Hilton-Jones and Elliot Taylor
 
-  \- DOP - Dann Cooper
+  DOP - Dann Cooper
 
-  \- Edited by - Elliot Taylor
+  Edited by - Elliot Taylor
 
-  \- Music by - Alistair Goldie and Abbi Hodgson
+  Music by - Alistair Goldie and Abbi Hodgson
 
-  \- VFX - Natasha Farmer
+  VFX - Natasha Farmer
 
-  \- Colourist - Craig Schwartz
+  Colourist - Craig Schwartz
 
-  \- Sound design - Dissolve Audio
+  Sound design - Dissolve Audio
 directors: Lucy Hilton-Jones & Elliot Taylor
-link: https://www.youtube.com/embed/DzH97BlBLBA
+link: https://vimeo.com/984819738
 clip: /uploads/hold_my_hand.m4v
 ---

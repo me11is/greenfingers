@@ -15,7 +15,9 @@ const films = await getCollection('films')
                 <Plane width="18px" />
                 <p>hello@greenfingersfilm.com</p>
             </div>
-            <p class="copy-text">click to copy</p>
+            <div class="copy-text-container">
+                <p class="copy-text">click to copy</p>
+            </div>
         </button>
         <div class="all-links">
             <ul class="nav-links">
@@ -111,11 +113,13 @@ const films = await getCollection('films')
         gap: 0.6rem;
     }
 
-    .copy-text {
+    .copy-text-container {
         height: 100%;
         line-height: 4;
         padding-left: 0.6rem;
         border-left: 1px solid #111;
+        position: relative;
+        width: 6rem;
     }
 
     .all-links {
@@ -153,7 +157,6 @@ const films = await getCollection('films')
         width: 100vw;
         height: auto;
         display: block;
-        transform: translateY(3rem);
     }
 
     @media (min-width: 768px) {

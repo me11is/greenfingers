@@ -6,38 +6,38 @@ synopsis: |-
 
   when the stable doors close, she realises her playmate isn't horsing around.
 cast: |-
-  \- Stacey - Lucy Hilton-Jones
+  Stacey - Lucy Hilton-Jones
 
-  \- Lavender - Ella Shulasmith Colgrave Clarke
+  Lavender - Ella Shulasmith Colgrave Clarke
 
-  \- Neighny 1 - Mo Bayliss
+  Neighny 1 - Mo Bayliss
 
-  \- Neighny 2 - Jess Mcdonagh
+  Neighny 2 - Jess Mcdonagh
 
-  \- Neighny 3 - Izzy Mckenty
+  Neighny 3 - Izzy Mckenty
 crew: |-
-  \- Written by: Greenfingers film
+  Written by: Greenfingers film
 
-  \- Directed by: Elliot Taylor & Liam Francis
+  Directed by: Elliot Taylor & Liam Francis
 
-  \- Produced by: Lucy Hilton-Jones
+  Produced by: Lucy Hilton-Jones
 
-  \- DOP: Dann Cooper
+  DOP: Dann Cooper
 
-  \- Music: Tom Beswick
+  Music: Tom Beswick
 
-  \- Sound recordist:Tomos Pierce
+  Sound recordist:Tomos Pierce
 
-  \- Sound mix: Dissolve Audio
+  Sound mix: Dissolve Audio
 
-  \- Edited by: Elliot Taylor
+  Edited by: Elliot Taylor
 
-  \- Grade By Harley Spence
+  Grade By Harley Spence
 
-  \- Kit Hire: No Drama
+  Kit Hire: No Drama
 
-  \- Lighting Hire: Drop City
+  Lighting Hire: Drop City
 directors: Elliot Taylor & Liam Francis
-link: https://www.youtube.com/embed/fzsmJK4yevg
+link: https://vimeo.com/759230573
 clip: /uploads/nnn.m4v
 ---

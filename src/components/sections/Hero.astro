@@ -64,29 +64,25 @@ import Logo from "../../assets/greenfingers.svg";
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    padding-left: 1.6rem;
-    padding-bottom: 1rem;
   }
 
   .hero svg {
     position: absolute;
     left: 0;
     max-width: 90%;
-    
+    padding: .6rem;
   }
 
   @media (min-width: 768px) {
     /* tablet */
     .hero svg {
-      margin-bottom: -1rem;
+      max-width: 70%;
+      padding: 1rem;
     }
   }
 
   @media (min-width: 1024px) {
     /* laptops */
-    .hero svg {
-      margin-bottom: 0rem;
-    }
   }
 
   @media (min-width: 1200px) {
@@ -94,4 +90,24 @@ import Logo from "../../assets/greenfingers.svg";
 </style>
 
 <script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".hero svg",
+      start: "bottom bottom",
+      end: "bottom top",
+      scrub: 1
+
+    }
+  })
+  tl.to(".hero svg", {
+    scale: 0.4,
+    top: 0,
+    left: 0,
+    transformOrigin: "top left"
+  })
 </script>

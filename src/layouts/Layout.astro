@@ -140,7 +140,7 @@ import { Font } from "astro:assets";
 	}
 
 	section:not(:first-of-type) {
-		padding: 3rem 1rem;
+		padding: 3rem .6rem;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -169,6 +169,9 @@ import { Font } from "astro:assets";
 
 	@media (min-width: 768px) {
 		/* tablet */
+		section {
+			padding: 3rem 1rem;
+		}
 	}
 
 	@media (min-width: 1024px) {

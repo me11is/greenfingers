@@ -2,6 +2,10 @@
 import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
+
+  devToolbar: {
+    enabled: false
+  },
   fonts: [
   {
     provider: fontProviders.local(),

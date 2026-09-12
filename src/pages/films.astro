@@ -1,20 +1,44 @@
 ---
-import { getCollection } from 'astro:content';
-import FilmGrid from '../components/FilmGrid.astro';
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-const films = await getCollection('films')
+import { getCollection } from "astro:content";
+import FilmGrid from "../components/FilmGrid.astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+const films = await getCollection("films");
 ---
+
 <Layout>
     <Navbar />
     <section>
         <h2>All Films</h2>
-        <FilmGrid films={films}  />
+        <FilmGrid films={films} />
     </section>
 </Layout>
 
 <style>
     section {
-        padding: 6rem 2rem;
+        padding: 6rem 0.6rem;
+    }
+
+    html,
+    body {
+    background: #111;
+    }
+
+    @media (min-width: 768px) {
+        /* tablet */
+        section {
+            padding: 6rem 2rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        /* Laptop */
+    }
+
+    @media (min-width: 1200px) {
+        /* desktops */
     }
 </style>
+<script>
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
+</script>

@@ -90,24 +90,4 @@ import Logo from "../../assets/greenfingers.svg";
 </style>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".hero svg",
-      start: "bottom bottom",
-      end: "bottom top",
-      scrub: 1
-
-    }
-  })
-  tl.to(".hero svg", {
-    scale: 0.4,
-    top: 0,
-    left: 0,
-    transformOrigin: "top left"
-  })
 </script>

@@ -180,11 +180,34 @@ import SectionHeader from "../SectionHeader.astro";
 
   gsap.registerPlugin(ScrollTrigger);
 
+  const portraits = document.querySelectorAll(".portraits img");
   const mm = gsap.matchMedia();
 
-  mm.add("(min-width: 1024px)", () => {
-    const portraits = document.querySelector(".portraits");
+  mm.add("(max-width: 1023px)", () => {
+    portraits.forEach((portrait) => {
+      let width = portrait.width;
+      let right = portrait.getBoundingClientRect().right;
+      let pos = width * 3 + right;
+      gsap.set(portrait, {
+        x: pos,
+      });
 
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: portrait,
+          start: "top 80%",
+        },
+      });
+
+      tl.to(portraits, {
+        x: 0,
+        ease: "elastic.out(1, 0.3)",
+        duration: 1.8
+      });
+    });
+  });
+
+  mm.add("(min-width: 1024px)", () => {
     const angle = (5 * Math.PI) / 180;
 
     const distance = window.innerHeight;

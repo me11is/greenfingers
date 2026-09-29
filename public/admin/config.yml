@@ -19,3 +19,4 @@ collections:
       - { label: "Directors", name: "directors", widget: "string" }
       - { label: "Link", name: "link", widget: "string" }
       - { label: "Thumbnail Clip", name: "clip", widget: "file" }
+      - { label: "Order", name: "order", widget: "number" }

@@ -1,6 +1,6 @@
 ---
 title: Brasslit
-year: 2019
+year: 2025
 synopsis: A sleep-deprived Kurt becomes hellbent on locating the mysterious
   trumpet noise that's keeping him up at night. But will what he discovers be
   more than meets the ear?

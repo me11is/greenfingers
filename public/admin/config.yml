@@ -12,6 +12,7 @@ collections:
     create: true # Allow users to create new documents in this collection
     fields: # The fields for each document, usually in frontmatter
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Order", name: "order", widget: "number" }
       - { label: "Year", name: "year", widget: "number" }
       - { label: "Synopsis", name: "synopsis", widget: "richtext" }
       - { label: "Cast", name: "cast", widget: "markdown" }
@@ -19,4 +20,3 @@ collections:
       - { label: "Directors", name: "directors", widget: "string" }
       - { label: "Link", name: "link", widget: "string" }
       - { label: "Thumbnail Clip", name: "clip", widget: "file" }
-      - { label: "Order", name: "order", widget: "number" }

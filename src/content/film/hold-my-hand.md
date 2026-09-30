@@ -1,5 +1,6 @@
 ---
 title: Hold My Hand
+order: 2
 year: 2024
 synopsis: In this recognisable advert, a gang of giddy sunseekers go on a trip
   they’ll never forget…
@@ -30,5 +31,4 @@ crew: |-
 directors: Lucy Hilton-Jones & Elliot Taylor
 link: https://vimeo.com/984819738
 clip: /uploads/hold_my_hand.m4v
-order: 3
 ---

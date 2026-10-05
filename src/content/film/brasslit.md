@@ -1,5 +1,6 @@
 ---
 title: Brasslit
+order: 9
 year: 2025
 synopsis: A sleep-deprived Kurt becomes hellbent on locating the mysterious
   trumpet noise that's keeping him up at night. But will what he discovers be
@@ -45,5 +46,4 @@ crew: |-
 directors: Lucy Hilton-Jones
 link: https://www.youtube.com/embed/PXfkNt5XiX0
 clip: /uploads/bl.m4v
-order: 2
 ---

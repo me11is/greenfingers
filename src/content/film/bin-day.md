@@ -2,24 +2,11 @@
 title: Bin Day
 order: 9
 year: 2022
-synopsis: >-
-  Bin Day is a surreal comedy about despondent graphic designer, Sara. After
-  being called into a meeting with her volatile boss and sycophant supervisor,
-  she is told that the business has a new optimisation app. It's suggestion for
-  Sara's future at the company? Promote her to the role of The Office Bin. What
-  a load of old rubbish.
-
-
-  Bin Day was an official selection at; 
-
-
-  Manchester Film Festival 
-
-
-  Comedy Short Awards
-
-
-  Romford Film Festival
+synopsis: Bin Day is a surreal comedy about despondent graphic designer, Sara.
+  After being called into a meeting with her volatile boss and sycophant
+  supervisor, she is told that the business has a new optimisation app. It's
+  suggestion for Sara's future at the company? Promote her to the role of The
+  Office Bin. What a load of old rubbish.
 cast: |-
   Sara - Lucy Hilton-Jones 
 

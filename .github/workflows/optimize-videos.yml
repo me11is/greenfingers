@@ -1,0 +1,114 @@
+name: Optimize uploaded videos
+
+on:
+  push:
+    paths:
+      - "public/uploads/**"
+
+  # Lets you run it manually from the Actions tab as well
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize-videos:
+    # Prevent a commit made by this action causing another compression run
+    if: github.actor != 'github-actions[bot]'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Optimize changed videos
+        shell: bash
+        run: |
+          set -e
+
+          UPLOAD_DIR="public/uploads"
+
+          # If manually triggered, process large videos in the entire folder.
+          # Otherwise only process videos changed in the latest commit.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            mapfile -d '' videos < <(
+              find "$UPLOAD_DIR" \
+                -type f \
+                \( -iname "*.mp4" -o -iname "*.mov" -o -iname "*.m4v" \) \
+                -size +5M \
+                -print0
+            )
+          else
+            mapfile -t videos < <(
+              git diff --name-only HEAD^ HEAD -- "$UPLOAD_DIR" |
+              grep -Ei '\.(mp4|mov|m4v)$' || true
+            )
+          fi
+
+          if [ ${#videos[@]} -eq 0 ]; then
+            echo "No videos to optimize."
+            exit 0
+          fi
+
+          for file in "${videos[@]}"; do
+            if [ ! -f "$file" ]; then
+              continue
+            fi
+
+            echo "Optimizing: $file"
+
+            extension="${file##*.}"
+            temp="${file%.*}.optimized.${extension}"
+
+            original_size=$(stat -c%s "$file")
+
+            ffmpeg \
+              -y \
+              -i "$file" \
+              -vf "scale=1920:1080:force_original_aspect_ratio=decrease:force_divisible_by=2" \
+              -c:v libx264 \
+              -preset medium \
+              -crf 28 \
+              -c:a aac \
+              -b:a 128k \
+              -movflags +faststart \
+              "$temp"
+
+            optimized_size=$(stat -c%s "$temp")
+
+            echo "Original:  $original_size bytes"
+            echo "Optimized: $optimized_size bytes"
+
+            # Only replace the original if compression actually made it smaller
+            if [ "$optimized_size" -lt "$original_size" ]; then
+              mv "$temp" "$file"
+              echo "Replaced with optimized version."
+            else
+              rm "$temp"
+              echo "Optimized file wasn't smaller, keeping original."
+            fi
+          done
+
+      - name: Commit optimized videos
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add public/uploads
+
+          git commit -m "Optimize uploaded videos"
+
+          git push

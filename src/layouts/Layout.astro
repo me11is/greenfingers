@@ -10,18 +10,103 @@ import { Font } from "astro:assets";
 			content="width=device-width, initial-scale=1, viewport-fit=cover"
 		/>
 		<meta charset="UTF-8" />
+
 		<Font cssVariable="--font-humane" />
 		<Font cssVariable="--font-body" />
 		<Font cssVariable="--font-mono" />
 
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-		></script>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+		<link rel="manifest" href="/site.webmanifest" />
 
-		<title>Greenfingers</title>
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Primary SEO -->
+		<title>
+			Greenfingers | Award-Winning Film Collective & Video Production Manchester
+		</title>
+
+		<meta 
+			name="description" 
+			content="Greenfingers is an award-winning Manchester film collective creating bold, surreal and genre-bending films, commercials and branded content."
+		/>
+
+		<link rel="canonical" href="https://www.greenfingers.film/" />
+
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Greenfingers | Award-Winning Film Collective Manchester" />
+		<meta 
+			property="og:description" 
+			content="An internationally award-winning film collective from Manchester creating bold, surreal and genre-bending films."
+		/>
+		<meta property="og:url" content="https://www.greenfingers.film/" />
+		<meta property="og:site_name" content="Greenfingers" />
+		<meta property="og:image" content="https://www.greenfingers.film/social-image.jpg" />
+
+
+		<!-- Twitter / X -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Greenfingers | Film Collective Manchester" />
+		<meta 
+			name="twitter:description" 
+			content="Award-winning directors creating surreal, genre-bending films and branded content."
+		/>
+		<meta name="twitter:image" content="https://www.greenfingers.film/social-image.jpg" />
+
+
+		<!-- Business Schema -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Greenfingers",
+			"description": "Internationally award-winning film collective based in Manchester creating films, commercials and branded content.",
+			"url": "https://www.greenfingers.film/",
+			"logo": "https://www.greenfingers.film/favicon.svg",
+			"location": {
+				"@type": "Place",
+				"name": "Manchester, UK"
+			},
+			"areaServed": [
+				"Manchester",
+				"United Kingdom",
+				"International"
+			],
+			"knowsAbout": [
+				"Film production",
+				"Commercial video production",
+				"Music videos",
+				"Branded content",
+				"Directing",
+				"Cinematography"
+			],
+			"founders": [
+				{
+					"@type": "Person",
+					"name": "Elliot Taylor"
+				},
+				{
+					"@type": "Person",
+					"name": "Lucy Hilton-Jones"
+				},
+				{
+					"@type": "Person",
+					"name": "Dann Cooper"
+				}
+			]
+		}
+		</script>
+
+
+		<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 	</head>
+
 	<body>
 		<slot />
 	</body>

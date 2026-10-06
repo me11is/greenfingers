@@ -9,18 +9,24 @@ interface Props {
 const { films, limit } = Astro.props as Props;
 
 ---
+
 <ul>
     {
-        films.sort((a,b) => a.data.order - b.data.order)
+        [...films]
+        .sort((a,b) => a.data.order - b.data.order)
         .slice(0, limit ?? undefined)
         .map((film) => {
             const {title, year, clip} = film.data
             const slug = title.toLowerCase().replaceAll(' ', '-')
+
             return (
-                <a class="film-grid-item" href={'film/' + slug}>
-                    <li>
+                <li>
+                    <a class="film-grid-item" href={'film/' + slug}>
                         <article>
                             <div class="video-wrap">
+
+                                <div class="video-skeleton"></div>
+
                                 <video
                                     autoplay
                                     loop
@@ -29,18 +35,20 @@ const { films, limit } = Astro.props as Props;
                                 >
                                     <source src={clip} type="video/mp4"/>
                                 </video>
+
                                 <div class="film-title">
                                     <p>{title}</p>
                                 </div>
+
                             </div>
                         </article>
-                    </li>
-                </a>
+                    </a>
+                </li>
             )
         })
-        
     }
 </ul>
+
 
 <style>
 ul {
@@ -51,9 +59,9 @@ ul {
     padding: 0;
     max-width: 90vw;
 }
+
 li {
     list-style: none;
-    /* border: 2px solid red; */
 }
 
 article {
@@ -61,19 +69,79 @@ article {
     flex-direction: column;
 }
 
+
+/* VIDEO AREA */
+
 div.video-wrap {
-    /* border: 2px solid red; */
     line-height: 0;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+    aspect-ratio: 16 / 9;
+    background: #111;
 }
+
+
+/* SKELETON */
+
+.video-skeleton {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        #111 25%,
+        #222 50%,
+        #111 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    z-index: 1;
+    transition: opacity .5s ease;
+}
+
+
+.video-wrap.loaded .video-skeleton {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+@keyframes shimmer {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+
+
+/* VIDEO */
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .6s ease;
+}
+
+
+.video-wrap.loaded video {
+    opacity: 1;
+}
+
+
+/* TITLE */
 
 div.film-title {
     position: absolute;
     bottom: .2rem;
     left: .8rem;
+    z-index: 2;
 }
+
 
 div.film-title p {
     font-family: var(--font-humane);
@@ -84,59 +152,87 @@ div.film-title p {
     margin: 0;
 }
 
-video {
-    max-width: 100%;
-}
 
 @media (min-width: 768px) {
-    /* tablet */
+
     ul {
         grid-template-columns: repeat(2, 1fr);
         row-gap: 0.8rem;
         column-gap: .8rem;
     }
 
-
 }
 
+
 @media (min-width: 1024px) {
-    /*laptops*/
+
     div.film-title p {
         font-size: 3rem;
     }
-}
 
-@media (min-width: 1200px) {
- /* desktops */
 }
 </style>
+
 
 <script>
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger) 
+gsap.registerPlugin(ScrollTrigger)
 
-gsap.utils.toArray(".film-grid-item").forEach(item => {
-  gsap.from(item, {
-    opacity: 0,
-    y: 50,
-    duration: 0.8,
-    ease: "sine.out",
-    scrollTrigger: {
-      trigger: item,
-      start: "top 90%"
+
+// VIDEO LOADING
+
+document.querySelectorAll(".video-wrap video").forEach(video => {
+
+    const wrapper = video.closest(".video-wrap");
+
+    video.addEventListener("loadeddata", () => {
+        wrapper?.classList.add("loaded");
+    });
+
+    // fallback in case browser already loaded it
+    if (video.readyState >= 2) {
+        wrapper?.classList.add("loaded");
     }
-  });
+
 });
 
-window.addEventListener("pageshow", (event) => {
-  if (event.persisted) {
-    document.querySelectorAll("video").forEach((video) => {
-      video.pause();
-      video.currentTime = 0;
-      video.play().catch(() => {});
+
+// SCROLL ANIMATION
+
+gsap.utils.toArray(".film-grid-item").forEach(item => {
+
+    gsap.from(item, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "sine.out",
+        scrollTrigger: {
+            trigger: item,
+            start: "top 90%"
+        }
     });
-  }
+
+});
+
+
+// BF CACHE FIX
+
+window.addEventListener("pageshow", (event) => {
+
+    if (event.persisted) {
+
+        document.querySelectorAll("video").forEach((video) => {
+
+            video.pause();
+            video.currentTime = 0;
+
+            video.play().catch(() => {});
+
+        });
+
+    }
+
 });
 </script>

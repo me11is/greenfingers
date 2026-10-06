@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^6.4.6",
     "gsap": "^3.15.0",
     "js-confetti": "^0.13.1",

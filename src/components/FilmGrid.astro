@@ -130,9 +130,13 @@ gsap.utils.toArray(".film-grid-item").forEach(item => {
   });
 });
 
-document.addEventListener("astro:page-load", () => {
-  document.querySelectorAll("video").forEach((video) => {
-    video.play().catch(() => {});
-  });
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    document.querySelectorAll("video").forEach((video) => {
+      video.pause();
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    });
+  }
 });
 </script>

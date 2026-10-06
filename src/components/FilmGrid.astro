@@ -11,7 +11,7 @@ const { films, limit } = Astro.props as Props;
 ---
 <ul>
     {
-        films.sort((a,b) => b.data.year - a.data.year)
+        films.sort((a,b) => a.data.order - b.data.order)
         .slice(0, limit ?? undefined)
         .map((film) => {
             const {title, year, clip} = film.data

@@ -37,7 +37,7 @@ crew: |-
 
   Edited by Elliot Taylor
 directors: Elliot Taylor & Liam Francis
-link: https://vimeo.com/569923051
+link: https://www.youtube.com/watch?v=jDybi3fc1f4
 clip: /uploads/teoth.m4v
 order: 5
 ---

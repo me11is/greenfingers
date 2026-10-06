@@ -17,7 +17,7 @@ crew: |-
   
   Edited by: Elliot Taylor
 directors: Elliot Taylor & Liam Francis
-link: https://vimeo.com/401865781
+link: https://www.youtube.com/watch?v=djiJKS1lBlE
 clip: /uploads/gf.m4v
 order: 6
 ---

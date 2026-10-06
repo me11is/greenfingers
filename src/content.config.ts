@@ -12,6 +12,7 @@ const films = defineCollection({
   loader: glob({ base: './src/content/film', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
+    order: z.number(),
     year: z.number(),
     synopsis: z.string(),
     cast: z.string(),
